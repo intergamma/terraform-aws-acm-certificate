@@ -19,9 +19,7 @@ resource "aws_acm_certificate_validation" "default" {
   provider        = "aws.${var.region}"
   certificate_arn = "${aws_acm_certificate.default.arn}"
 
-  validation_record_fqdns = [
-    "${distinct(compact(concat(aws_route53_record.default.fqdn, var.subject_alternative_names)))}",
-  ]
+  validation_record_fqdns = ["${aws_route53_record.default.*.fqdn}"]
 }
 
 resource "aws_route53_record" "default" {
