@@ -38,3 +38,8 @@ variable "zone_name" {
   default     = ""
   description = "The name of the desired Route53 Hosted Zone"
 }
+
+variable "region" {
+  type        = "string"
+  description = "Region where certificate should be created"
+}
