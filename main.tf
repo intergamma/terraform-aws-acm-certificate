@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "default" {
-  provider                  = "aws.${var.region}"
+  provider                  = "${var.region}"
   domain_name               = "${var.domain_name}"
   validation_method         = "${var.validation_method}"
   subject_alternative_names = ["${var.subject_alternative_names}"]
@@ -28,7 +28,7 @@ resource "null_resource" "default" {
 }
 
 resource "aws_acm_certificate_validation" "default" {
-  provider        = "aws.${var.region}"
+  provider        = "${var.region}"
   certificate_arn = "${aws_acm_certificate.default.arn}"
 
   validation_record_fqdns = [
