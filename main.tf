@@ -29,4 +29,6 @@ resource "aws_route53_record" "default" {
   type    = "${lookup(aws_acm_certificate.default.domain_validation_options[count.index], "resource_record_type")}"
   ttl     = "${var.ttl}"
   records = ["${lookup(aws_acm_certificate.default.domain_validation_options[count.index],"resource_record_value")}"]
+  
+  allow_overwrite = true
 }
