@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "default" {
-  provider                  = "aws.${var.region}"
+  provider                  = "aws.us-east-1"
   domain_name               = "${var.domain_name}"
   validation_method         = "${var.validation_method}"
   subject_alternative_names = ["${var.subject_alternative_names}"]
