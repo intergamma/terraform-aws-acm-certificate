@@ -16,7 +16,7 @@ data "aws_route53_zone" "default" {
 }
 
 resource "aws_acm_certificate_validation" "default" {
-  provider        = "aws.${var.region}"
+  provider        = "aws.us-east-1"
   certificate_arn = "${aws_acm_certificate.default.arn}"
 
   validation_record_fqdns = ["${aws_route53_record.default.*.fqdn}"]
