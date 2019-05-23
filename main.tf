@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "default" {
-  provider                  = "aws.us-east-1"
+  provider                  = "aws.eu-west-1"
   domain_name               = "${var.domain_name}"
   validation_method         = "${var.validation_method}"
   subject_alternative_names = ["${var.subject_alternative_names}"]
@@ -16,7 +16,7 @@ data "aws_route53_zone" "default" {
 }
 
 resource "aws_acm_certificate_validation" "default" {
-  provider        = "aws.us-east-1"
+  provider        = "aws.eu-west-1"
   certificate_arn = "${aws_acm_certificate.default.arn}"
 
   validation_record_fqdns = ["${aws_route53_record.default.*.fqdn}"]
