@@ -19,7 +19,7 @@ resource "aws_acm_certificate_validation" "default" {
   provider        = "aws.eu-west-1"
   certificate_arn = "${aws_acm_certificate.default.arn}"
 
-  validation_record_fqdns = ["${aws_route53_record.default.*.fqdn}"]
+  validation_record_fqdns = aws_route53_record.default[*].fqdn
 }
 
 resource "aws_route53_record" "default" {
